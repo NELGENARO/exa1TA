@@ -1,0 +1,111 @@
+<div class="row g-0">
+    <div class="form-group col-6">
+        <input type="text" id="rutaApiPokemon" class="form-control" disabled value="https://pokeapi.co/api/v2/pokemon/">
+    </div>
+    <div class="form-group col-6">
+        <select [(ngModel)]="selectedOption" (change)="onChange()" name="" id="" class="form-control">
+            <option value="" disabled>Selecione un pokemon </option>
+            <option *ngFor="let item of elementos" [value]="item.nombre">{{ item.nombre }}</option>
+        </select>
+    </div>
+</div>
+
+<!-- ======================================================== -->
+<div class="text-left">
+    <!-- <h3 class="my-3"><span style="text-transform: uppercase;">{{pokemon.nombre}}</span></h3> -->
+    <div class="row bg-white text-left">
+        <div class="d-flex justify-content-center pt-2 rounded-circle">
+            <div class="col-6 bg-info">
+                <img src={{pokemon.imagen1}} alt="" width="100%" class="rounded-circle">
+            </div>
+            <div class="col-6 bg-info">
+                <img src={{pokemon.imagen2}} alt="" width="100%" class="rounded-circle">
+            </div>
+        </div>
+        <hr>
+        <h6>Nombre: <strong>{{pokemon.nombre}}</strong></h6>
+        <h6>Tipo: 
+            <div class="inlinea-block" *ngFor="let item of pokemon.tipo">
+                <strong> {{ item }} </strong>
+            </div>
+        </h6>
+        <h6>Tamaño : <strong>{{pokemon.tamanio}}</strong> Pies</h6>
+        <h6>Peso: <strong>{{pokemon.peso}}</strong></h6>
+        <h6> Habilidades: 
+            <!-- <div class="inlinea-block" *ngFor="let item of pokemon.habilidades">
+                <strong> {{ item }} </strong>
+            </div> -->
+            <div>                                                              
+                <a *ngFor="let link of pokemon.habilidades" href="#" (click)="solicitarHabilidadPokemon($event)" style="margin-right: 10px">{{ link }}</a>
+            </div>
+        </h6>
+        <h6>Especie: <strong>{{pokemon.especie}}</strong></h6>
+        <h6>Experiencia base: <strong>{{pokemon.experencia_base}}</strong></h6>
+        <h6>Identificador: <strong>{{pokemon.identificador}}</strong></h6>
+        <h6>Vida: <strong>{{pokemon.vida}}</strong> /255 hp</h6>
+        <div class="container d-flex align-items-center justify-content-center">
+            <div class="col-12 my-1">
+                <div class="progress">
+                   <div class="progress-bar bg-success" role="progressbar" [style.width]="(pokemon.vida / vidaMaxima) * 100 + '%'"  aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">{{((pokemon.vida / vidaMaxima) * 100).toFixed(2)}}</div> 
+                </div>
+            </div>
+        </div>
+        <h6>Ataque: <strong>{{pokemon.ataque}}</strong> /{{ataqueMaximo}}</h6>
+        <div class="container d-flex align-items-center justify-content-center">
+            <div class="col-12 my-1">
+                <div class="progress">
+                   <div class="progress-bar bg-danger" role="progressbar" [style.width]="(pokemon.ataque / ataqueMaximo) * 100 + '%'"  aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">{{((pokemon.ataque / ataqueMaximo) * 100).toFixed(2)}}</div> 
+                </div>
+            </div>
+        </div>
+        <h6>Defensa: <strong>{{pokemon.defensa}}</strong> / {{defensaMaxima}}</h6>
+        <div class="container d-flex align-items-center justify-content-center">
+            <div class="col-12 my-1">
+                <div class="progress">
+                   <div class="progress-bar bg-primary" role="progressbar" [style.width]="(pokemon.defensa / defensaMaxima) * 100 + '%'"  aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">{{((pokemon.defensa / defensaMaxima) * 100).toFixed(2)}}</div> 
+                </div>
+            </div>
+        </div>
+        <h6>Velocidad: <strong>{{pokemon.velocidad}}</strong> /{{velocidadMaxima}}</h6>
+        <div class="container d-flex align-items-center justify-content-center">
+            <div class="col-12 my-1">
+                <div class="progress">
+                   <div class="progress-bar bg-warning" role="progressbar" [style.width]="(pokemon.velocidad / velocidadMaxima) * 100 + '%'"  aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">{{((pokemon.velocidad / velocidadMaxima) * 100).toFixed(2)}}</div> 
+                </div>
+            </div>
+        </div>
+        <h6>Ataque especial: <strong>{{pokemon.ataque_especial}}</strong></h6>
+        <h6>Defensa especial: <strong>{{pokemon.defensa_especial}}</strong></h6>
+      
+    </div>
+</div>
+<!-- ================================================================= -->
+
+<!-- <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#myModal">Small button</button> -->
+<!-- <ul>
+    <li><a href="" data-bs-toggle="modal" data-bs-target="#myModal">Prueba</a></li>
+</ul> -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Habilidades - {{habilidad}}</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          <p><strong>Detalle: </strong><span>{{detalleHabilidad}}</span></p>
+          <p><strong>Descripcion: </strong><span>{{descripcionHabilidad}}</span></p>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>

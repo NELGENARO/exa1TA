@@ -1,0 +1,21 @@
+export interface Pokemon {
+    nombre: string,
+    imagen1: string,
+    imagen2: string,
+    url: string,
+    tipo: string[],
+    tamanio: number,
+    peso: number,
+    habilidades:string[],
+    especie: string,
+    experencia_base: string,
+    identificador: number,
+    devolucion: string,
+    evolucion: string,
+    vida: number,
+    ataque: number, 
+    defensa: number,
+    ataque_especial: number,
+    defensa_especial: number,
+    velocidad: number
+}
